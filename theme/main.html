@@ -4,8 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ config.site_name }}</title>
+  <link rel="stylesheet" href="{{ 'style.css' | url }}">
 </head>
 <body>
-  {{ page.content }}
+  <header class="header">
+    <h1 class="header__title">{{ config.site_name }}</h1>
+
+      <nav class="header__nav">
+        {% for header__nav_item in nav %}
+          <a href="{{ header__nav_item.url | url }}" class="nav-link {% if header__nav_item.active %}active{% endif %}">
+            {{ header__nav_item.title }}
+          </a>
+        {% endfor %}
+      </nav>
+  </header>
+
+  <div class="divider"></div>
+
+  <main class="main">
+    {{ page.content }}
+  </main>
+
+  <footer class="footer">
+    &copy; {{ config.site_author }}
+  </footer>
 </body>
 </html>
