@@ -1,5 +1,6 @@
 site_name: НИР 2
 site_author: dumbus
+site_description: custom mkdocs theme
 
 theme:
   name: null
