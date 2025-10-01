@@ -1,0 +1,32 @@
+{
+  "name": "mkdocs-custom-theme",
+  "version": "1.0.0",
+  "description": "mkdocs custom theme",
+  "author": "dumbus",
+  "license": "ISC",
+  "scripts": {
+    "serve": "serve",
+    "dev": "mkdocs serve",
+    "prod": "npm run build && serve site",
+    "build:html": "html-minifier-terser --input-dir site --output-dir site --file-ext html --remove-comments --collapse-whitespace",
+    "build:css": "postcss theme/style.css --use autoprefixer --use cssnano --no-map --output site/style.css",
+    "validate:html": "html-validate site --ext=html --max-warnings=0",
+    "build": "mkdocs build && npm run build:html && npm run build:css && npm run validate:html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dumbus/mkdocs-custom-theme.git"
+  },
+  "dependencies": {
+    "serve": "^14.2.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "copyfiles": "^2.4.1",
+    "cssnano": "^7.1.1",
+    "html-minifier-terser": "^7.2.0",
+    "html-validate": "^10.0.0",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1"
+  }
+}
