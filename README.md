@@ -1,99 +1,55 @@
-## Создание и развертывание статического сайта (Отчёт)
+## Кастомизация статического сайта (шаблонизация, сборка статики: HTML, CSS, JS) (Отчёт)
 
 > Дисциплина "Проектирование и развертывание веб-решений в эко-системе Python"
 
 ### Шаги работы
 
-1. Создать репозиторий в GitHub.
-2. Клонировать репозиторий локально, не забыть добавить .gitignore.
-3. Развернуть Python-проект на каком-либо движке (создание виртуального окружения, установка зависимостей) *(был выбран mkdocs)*
-4. Создать 1-2 страницы локально, сбилдить их, загрузить на хостинг
-5. Автоматизировать деплой (GitHub Actions)
+1. Создать собственную тему на основе HTML, CSS, JS с использованием или без использования CSS-библиотек таких как Bootstrap, Bulma, фреймворков (например, Tailwind), JS-библиотек для разработки фронтэнда (например, React). 
+2. Разработать пайплайн или набор пайплайнов (yml-файл) для тестирования и  сборки статики (HTML, CSS, JS) — фронтэнда сайта, а затем построения собственно самого сайта (интеграции контента в разметке Markdown в шаблон сайта) и деплоя его на GitHub Pages. 
+3. Необходимо учесть, что HTML файлы должны валидироваться на корректность, минифицироваться, должна быть предусмотрена сборка с помощью PostCSS.
 
 ### Описание выполнения работы
 
-1. Создание репозитория в github
+1. Создание папки `theme` с файлами шаблона `main.html` и стилей `styles.css`.
 
-<img width="1920" height="986" alt="1" src="https://github.com/user-attachments/assets/408f9624-fa65-4ba7-81dc-3a3f88fef354" />
+<img width="1920" height="1030" alt="1" src="https://github.com/user-attachments/assets/a1eaf2c0-5c98-4013-bb8d-77b84e05d045" />
 
-2. Клонирование репозитория локально, создание виртуального окружения
+2. Использование синтаксиса `Jinja2` для добавления в html-шаблон контента из mkdocs (расположенного в файлах `*.md`)
 
-<img width="1920" height="1030" alt="2" src="https://github.com/user-attachments/assets/071d70d5-38a4-412c-8038-06044c21d471" />
+<img width="1920" height="1030" alt="2" src="https://github.com/user-attachments/assets/cc035a3a-3739-4c82-bb4c-39e0223e4376" />
 
-3. Использование виртуального окружения
+3. Добавление в файл `styles.css` стилей для страниц сайта
 
-<img width="1920" height="1030" alt="3" src="https://github.com/user-attachments/assets/346e711a-ddec-4797-b5ee-dc64a5c11a5a" />
+<img width="1920" height="1030" alt="3" src="https://github.com/user-attachments/assets/c71bdd68-3b32-4488-95fd-481db003f410" />
 
-4. Создание шаблона проекта с помощью `mkdocs`
+4. Добавление на сайт meta-тегов с метаданными
 
-<img width="1920" height="983" alt="4" src="https://github.com/user-attachments/assets/6c501496-055f-4083-bf28-067f70fc38c8" />
+<img width="1920" height="1030" alt="4" src="https://github.com/user-attachments/assets/d10b74eb-674b-465c-96c7-5a1a39e8465c" />
 
-5. Наполнение статического сайта своей информацией (информация о НИР 2)
+5. Запуск статического сайта с кастомной темой локально
 
-<img width="1920" height="983" alt="5" src="https://github.com/user-attachments/assets/26722b72-db7c-4ddd-9aeb-0cb077dbc9bb" />
+<img width="1920" height="1030" alt="5" src="https://github.com/user-attachments/assets/9a6bee7b-706c-4728-af11-1e5837becd86" />
 
-6. Сборка статического сайта с помощью `mkdocs`
+6. Формирование npm-скриптов для минимизации и валидации статики сайта
 
-<img width="1920" height="1030" alt="6" src="https://github.com/user-attachments/assets/f19c7269-23bc-4e38-9688-3526b6264da8" />
+<img width="1920" height="1030" alt="6" src="https://github.com/user-attachments/assets/eddcf536-dd21-43a1-b95a-c4b69dd7e8d2" />
 
-7. Деплой созданного сайта на `github-pages` вручную (использовался push папки `site` в ветку `gh-pages`)
+7. Запуск команды сборки (`npm run build`) для получения минифицированной версии статики сайта
 
-<img width="1920" height="981" alt="7" src="https://github.com/user-attachments/assets/46c4338b-09b3-40c4-8d2b-44bb034cf85f" />
+<img width="1920" height="1030" alt="7" src="https://github.com/user-attachments/assets/0f8bc822-e78c-420d-bf16-3b3579764df7" />
 
-8. Демонстрация опубликованного на `gh-pages` вручную сайта
+8. Демонстрация работы валидации html-кода (валидатор указывает на незакрытый html-тег)
 
-<img width="1920" height="983" alt="8" src="https://github.com/user-attachments/assets/9ed02a9f-b5a9-4c6b-9982-9f4c5e47983f" />
+<img width="1920" height="1030" alt="8" src="https://github.com/user-attachments/assets/4a552d10-800a-4ef8-a9c9-f6819b59eb02" />
 
-9. Создание и настройка `GitHub Actions workflow` для автоматического деплоя на `gh-pages` (при `push` в ветки `develop/main`)
+9. Формирование обновлённого пайплайна для публикации на `gh-pages` со сборкой кастомной темы
 
-<img width="1920" height="1030" alt="9" src="https://github.com/user-attachments/assets/1f6438c5-1aa7-4ca1-b306-944c40a55de6" />
+<img width="1920" height="1030" alt="9" src="https://github.com/user-attachments/assets/233a8466-5f35-4503-b584-c5af8611865c" />
 
-10. Переключение gh-pages на деплой с помощью `github actions`
+10. Успешное выполнение команд из пайплайна
 
-<img width="1920" height="979" alt="10" src="https://github.com/user-attachments/assets/59ef3812-b803-4709-bd15-30de7bb374a7" />
+<img width="1920" height="1030" alt="10" src="https://github.com/user-attachments/assets/8dbd028b-7a1f-4f42-95f2-8c99ac26051d" />
 
-11. Добавление дополнительного контента на сайт, чтобы можно было удостовериться, что на gh-pages находится новая версия, опубликованная автоматически с помощью github-actions
+11. Сайт с кастомной темой, автоматически опубликованный на `gh-pages`
 
-<img width="1920" height="1030" alt="11" src="https://github.com/user-attachments/assets/fa3d8e08-2c6d-4a4c-973f-2812315f27cf" />
-
-12. Успешное выполнение github action
-
-<img width="1920" height="981" alt="12" src="https://github.com/user-attachments/assets/15112fde-4db8-43db-9344-2f2ae6853d61" />
-
-13. Новая запись среди `gh-pages deployments `
-
-<img width="1920" height="981" alt="13" src="https://github.com/user-attachments/assets/631552bc-4391-4628-a00f-75aaaa4e40e4" />
-
-14. Демонстрация автоматически опубликованного на `gh-pages` сайта (добавленная на сайт для проверки строчка присутствует)
-
-<img width="1920" height="977" alt="14" src="https://github.com/user-attachments/assets/573673de-bdd5-4c02-89d0-8f0b0db0b3ec" />
-
-## Ответы на вопросы (Исследование)
-
-1.	Возможности использования отечественных CDN для ускорения доставки контента
-
-[ngenix](https://ngenix.net/ecp/cdn/) – Есть возможность запросить бесплатный пробный период на 2 недели
-[EDGE Центр](https://edgecenter.ru/cdn) – Есть возможность запросить бесплатный пробный период на 2 недели
-
-
-[Selectel]( https://selectel.ru/services/additional/cdn/)
-[VK Cloud]( https://cloud.vk.com/cdn/)
-[Yandex Cloud](https://yandex.cloud/ru/docs/cdn)
-[cdnvideo](https://www.cdnvideo.ru/solutions/cdn-for-website-acceleration/)
-[Cloud.ru](https://cloud.ru/products/cloud-cdn?utm_source=google.com&utm_medium=organic&utm_campaign=google.com&utm_referrer=google.com)
-
-2. Возможности Gitverse для реализации CI/CD
-
-Судя по документации, Gitverse поддерживает `GitVerse Actions`, схожие по функционалу с `GitHub Actions`: https://gitverse.ru/docs/knowledge-base/actions/runners/  
-
-По аналогии с GitHub Actions, конфигурационные файлы рабочих процессов GitVerse Actions должны быть написаны в синтаксисе YAML и располагаться в .gitverse/workflows/  репозитория.  
-
-Пример из документации: https://gitverse.ru/gitverse_tutorials/CICD_examples/content/demo
-
-3. Какие существуют варианты деплоя статического сайта в продакшен среду и какие технические инструменты для этого могут потребоваться, приведите примеры
-
-- Ручной деплой (загрузка файлов сборки на сервер вручную через клиенты вроде FileZilla)
-
-- Деплой через Git (ряд хостингов имеет возможность автоматически подтягивать изменения из ветки и запускать сборку и деплой. Пример: [Vercel](https://vercel.com/docs/deployments#git))
-
-- Деплой через CI/CD пайплайн (настраивается автоматический конвейер, который запускает скрипты для тестирования, сборки и деплоя автоматически при поступлении нового кода в репозиторий. Пример инструментов: использование `GitHub Actions`, `GitLab-CI`, `Jenkins` для построения пайплайнов).
+<img width="1920" height="1030" alt="11" src="https://github.com/user-attachments/assets/d4bfbc93-b504-49f7-bce4-36bbab84eb9b" />
